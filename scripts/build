@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+# under app
+cd app
+npm install
+bower install
+gulp build
+
+# back to here
+cd ..
+npm install
+gulp # Download atom shell
+
+# cp to app
+rm -r binaries/Atom.app/Contents/Resources/app || true
+cp -r app binaries/Atom.app/Contents/Resources/app
+
+# TODO: encryption
